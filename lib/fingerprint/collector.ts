@@ -310,6 +310,8 @@ export async function collectSignals(onProgress?: (step: string) => void): Promi
   p('Ad blocker check');         const adBlocker = await detectAdBlocker()
   p('WebRTC leak test');         const webrtc = await detectWebRTC()
   p('Fetching IP & location');   const network = await getNetworkInfo()
+  webrtc.leaked = !!(webrtc.publicIp && network.ip && webrtc.publicIp !== network.ip)
+
   p('Complete!')
   return {
     canvas, webgl, audio, navigator: nav, screen: scr, timezone: tz, fonts, plugins,

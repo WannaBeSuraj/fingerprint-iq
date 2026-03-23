@@ -44,7 +44,7 @@ export default function HeroSection() {
           { text: `> Incognito mode:        ${signals.privacy.incognito ? '⚠ DETECTED' : 'not detected'}`, color: signals.privacy.incognito ? 'var(--warn)' : 'var(--muted2)', delay: 3150 },
           { text: `> VPN / proxy:           ${signals.network.isVPN ? '⚠ DETECTED — ' + signals.network.vpnReason.substring(0, 30) : 'not detected'}`, color: signals.network.isVPN ? 'var(--warn)' : 'var(--muted2)', delay: 3500 },
           { text: `> Ad blocker:            ${signals.privacy.adBlocker ? 'detected ✓' : 'not detected'}`, color: signals.privacy.adBlocker ? 'var(--accent2)' : 'var(--muted2)', delay: 3500 },
-          { text: `> WebRTC IP leak:        ${signals.webrtc.leaked ? '⚠ LEAKING — ' + signals.network.ip : 'secure'}`, color: signals.webrtc.leaked ? 'var(--danger)' : 'var(--accent)', delay: 3850 },
+          { text: `> WebRTC IP leak:        ${signals.webrtc.leaked ? '⚠ LEAKING — ' + signals.webrtc.publicIp : 'secure'}`, color: signals.webrtc.leaked ? 'var(--danger)' : 'var(--accent)', delay: 3850 },
           { text: `> ─────────────────────────────────────`, color: 'var(--border2)', delay: 4200 },
           { text: `> Privacy Leakage Score: [ ${pls.score} / 100 ] ${pls.tier}`, color: pls.color, delay: 4600 },
           { text: `> Threat classification: ${pls.threatTag}`, color: pls.threatColor, delay: 5000 },

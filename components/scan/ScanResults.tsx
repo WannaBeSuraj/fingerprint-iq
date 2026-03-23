@@ -192,7 +192,7 @@ export default function ScanResults({ signals, pls, fingerprintId, onReset }: Pr
               value={signals.webrtc.leaked}
               yesColor="var(--danger)" noColor="var(--accent)"
               detail={signals.webrtc.leaked
-                ? `Leaked IP: ${n.ip}`
+                ? `Leaked IP via STUN: ${signals.webrtc.publicIp || signals.webrtc.localIp}`
                 : undefined} />
 
             <FlagRow label="Canvas Blocked"
@@ -355,7 +355,7 @@ export default function ScanResults({ signals, pls, fingerprintId, onReset }: Pr
               `IP: ${n.ip || 'unknown'} · ${n.city}, ${n.country}`,
               `VPN: ${n.isVPN ? 'Detected' : 'Not detected'}`,
               `Incognito: ${signals.privacy.incognito ? 'Yes' : 'No'}`,
-              `WebRTC Leak: ${signals.webrtc.leaked ? 'YES — ' + n.ip : 'No'}`,
+              `WebRTC Leak: ${signals.webrtc.leaked ? 'YES — ' + signals.webrtc.publicIp : 'No'}`,
               `Fingerprint ID: ${fingerprintId}`,
             ]
             navigator.clipboard?.writeText(lines.join('\n'))

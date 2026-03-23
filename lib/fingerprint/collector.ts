@@ -65,8 +65,17 @@ async function getCanvas(): Promise<{ hash: string; blocked: boolean }> {
   try {
     const c = document.createElement('canvas')
     c.width = 300; c.height = 150
+    c.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0.01;pointer-events:none;z-index:-1;'
+    if (document.body) document.body.appendChild(c)
+    
+    // Allow extensions relying on MutationObserver to hook the element
+    await new Promise(r => setTimeout(r, 0))
+
     const ctx = c.getContext('2d')
-    if (!ctx) return { hash: 'ctx_unavailable', blocked: true }
+    if (!ctx) {
+      if (document.body && c.parentNode === document.body) document.body.removeChild(c)
+      return { hash: 'ctx_unavailable', blocked: true }
+    }
     ctx.textBaseline = 'top'; ctx.font = '14px Arial'
     ctx.fillStyle = '#f60'; ctx.fillRect(125, 1, 62, 20)
     ctx.fillStyle = '#069'; ctx.fillText('FingerprintIQ 1.0', 2, 15)
@@ -74,20 +83,41 @@ async function getCanvas(): Promise<{ hash: string; blocked: boolean }> {
     ctx.beginPath(); ctx.arc(50, 50, 25, 0, Math.PI * 2)
     ctx.fillStyle = 'rgba(255,0,0,0.5)'; ctx.fill()
     const url = c.toDataURL()
+    
+    if (document.body && c.parentNode === document.body) document.body.removeChild(c)
+
     if (!url || url === 'data:,' || url.length < 200) return { hash: 'blocked_blank', blocked: true }
+    
+    // Log for debugging
+    console.log('[Debug] Generated Canvas URL length:', url.length)
+    
     return { hash: await sha256(url), blocked: false }
   } catch { return { hash: 'blocked_error', blocked: true } }
 }
 
-function getWebGL(): { vendor: string; renderer: string; blocked: boolean } {
+async function getWebGL(): Promise<{ vendor: string; renderer: string; blocked: boolean }> {
   try {
     const c = document.createElement('canvas')
+    c.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0.01;pointer-events:none;z-index:-1;'
+    if (document.body) document.body.appendChild(c)
+
+    await new Promise(r => setTimeout(r, 0))
+
     const gl = (c.getContext('webgl') || c.getContext('experimental-webgl')) as WebGLRenderingContext | null
-    if (!gl) return { vendor: 'unavailable', renderer: 'unavailable', blocked: true }
+    if (!gl) {
+      if (document.body && c.parentNode === document.body) document.body.removeChild(c)
+      return { vendor: 'unavailable', renderer: 'unavailable', blocked: true }
+    }
     const ext = gl.getExtension('WEBGL_debug_renderer_info')
+    
+    const vendor = (ext ? gl.getParameter(ext.UNMASKED_VENDOR_WEBGL)   : gl.getParameter(gl.VENDOR))   || 'unknown'
+    const renderer = (ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER)) || 'unknown'
+    
+    if (document.body && c.parentNode === document.body) document.body.removeChild(c)
+
     return {
-      vendor:   (ext ? gl.getParameter(ext.UNMASKED_VENDOR_WEBGL)   : gl.getParameter(gl.VENDOR))   || 'unknown',
-      renderer: (ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER)) || 'unknown',
+      vendor,
+      renderer,
       blocked: false,
     }
   } catch { return { vendor: 'blocked', renderer: 'blocked', blocked: true } }
@@ -266,7 +296,7 @@ function detectFonts(): string[] {
 export async function collectSignals(onProgress?: (step: string) => void): Promise<FingerprintSignals> {
   const p = (s: string) => onProgress?.(s)
   p('Canvas fingerprint');       const canvas  = await getCanvas()
-  p('WebGL renderer');           const webgl   = getWebGL()
+  p('WebGL renderer');           const webgl   = await getWebGL()
   p('Audio context');            const audio   = await getAudio()
   p('Navigator & hardware')
   const connNav = (navigator as unknown as { connection?: { effectiveType: string; downlink: number; rtt: number } }).connection

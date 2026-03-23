@@ -67,7 +67,7 @@ function DataCard({ label, value, accent }: { label: string; value: string; acce
       <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.58rem', color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '4px' }}>
         {label}
       </div>
-      <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.76rem', color: accent || 'var(--accent2)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}
+      <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.76rem', color: accent || 'var(--accent2)', wordBreak: 'break-all', lineHeight: 1.3 }}
         title={value}>
         {value || '—'}
       </div>
@@ -231,8 +231,15 @@ export default function ScanResults({ signals, pls, fingerprintId, onReset }: Pr
             </span>
           )}
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '0.6rem' }}>
-          <DataCard label="Your IP"           value={n.ip || 'unavailable'}        accent={n.ip ? 'var(--accent)' : 'var(--muted)'} />
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '0.6rem' }}>
+          {n.isVPN ? (
+            <>
+              <DataCard label="VPN IP" value={n.ip || 'unavailable'} accent="var(--warn)" />
+              <DataCard label="Real IP" value={signals.webrtc.leaked ? signals.webrtc.publicIp : 'Hidden (Secure)'} accent={signals.webrtc.leaked ? 'var(--danger)' : 'var(--accent)'} />
+            </>
+          ) : (
+            <DataCard label="Your IP" value={n.ip || 'unavailable'} accent={n.ip ? 'var(--accent)' : 'var(--muted)'} />
+          )}
           <DataCard label="Country"           value={n.country || '—'} />
           <DataCard label="City"              value={n.city || '—'} />
           <DataCard label="Region"            value={n.region || '—'} />
@@ -373,15 +380,32 @@ export default function ScanResults({ signals, pls, fingerprintId, onReset }: Pr
             try {
               const html2canvas = (await import('html2canvas')).default
               const { jsPDF } = await import('jspdf')
-              const canvas = await html2canvas(reportRef.current, { backgroundColor: '#050810', scale: 2 })
-              const imgData = canvas.toDataURL('image/png')
-              const pdf = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' })
-              const pdfW = pdf.internal.pageSize.getWidth()
-              const pdfH = (canvas.height * pdfW) / canvas.width
               
-              // If height exceeds page, it will overflow natively in a simple PDF, 
-              // but for this length it should just fit or naturally extend.
-              pdf.addImage(imgData, 'PNG', 0, 0, pdfW, pdfH)
+              const el = reportRef.current
+              const originalWidth = el.style.width
+              const originalMaxWidth = el.style.maxWidth
+              const isMobile = window.innerWidth < 800
+              
+              // Force desktop dimensions on mobile so PDF layout doesn't stack vertically
+              if (isMobile) {
+                el.style.width = '840px'
+                el.style.maxWidth = '840px'
+              }
+              await new Promise(r => setTimeout(r, 100))
+
+              const canvas = await html2canvas(el, { backgroundColor: '#050810', scale: 2, windowWidth: isMobile ? 840 : window.innerWidth })
+              const imgData = canvas.toDataURL('image/jpeg', 0.95)
+              
+              if (isMobile) {
+                el.style.width = originalWidth
+                el.style.maxWidth = originalMaxWidth
+              }
+
+              const pdfW = canvas.width / 2
+              const pdfH = canvas.height / 2
+              const pdf = new jsPDF({ orientation: pdfW > pdfH ? 'l' : 'p', unit: 'px', format: [pdfW, pdfH] })
+              
+              pdf.addImage(imgData, 'JPEG', 0, 0, pdfW, pdfH)
               pdf.save(`FingerprintIQ_${fingerprintId.substring(0,8)}.pdf`)
             } catch (err) {
               console.error('Failed to generate PDF:', err)

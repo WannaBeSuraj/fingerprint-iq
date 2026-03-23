@@ -72,9 +72,9 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <section style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', padding: '80px 2.5rem 3rem', maxWidth: '1300px', margin: '0 auto', gap: '4rem' }}>
+    <section className="min-h-screen flex items-center pt-28 pb-12 px-5 md:px-10 max-w-[1300px] mx-auto gap-12 md:gap-16 flex-wrap md:flex-nowrap">
       {/* Left — Copy */}
-      <div style={{ flex: '1 1 480px', minWidth: 0 }}>
+      <div className="flex-1 min-w-0" style={{ flexBasis: '480px' }}>
         <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.7rem', color: 'var(--accent)', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: '1.5rem', opacity: 0.9 }}>
           ◈ Adaptive Privacy Intelligence Platform
         </div>
@@ -125,7 +125,7 @@ export default function HeroSection() {
       </div>
 
       {/* Right — Terminal */}
-      <div className="float" style={{ flex: '1 1 420px', minWidth: 0, maxWidth: '520px' }}>
+      <div className="float flex-1 w-full max-w-lg md:max-w-[520px] min-w-0">
         <div className="gradient-border" style={{ borderRadius: '12px', overflow: 'hidden' }}>
           {/* Terminal header */}
           <div style={{ background: 'var(--panel2)', padding: '12px 16px', display: 'flex', alignItems: 'center', gap: '8px', borderBottom: '1px solid var(--border)' }}>

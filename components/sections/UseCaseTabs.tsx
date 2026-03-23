@@ -79,7 +79,7 @@ export default function UseCaseTabs() {
   const tab = TABS.find(t => t.id === active)!
 
   return (
-    <section id="use-cases" style={{ padding: '6rem 2.5rem' }}>
+    <section id="use-cases" className="py-24 px-5 md:px-10">
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <div className="section-fade" style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.7rem', color: 'var(--accent)', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: '1rem' }}>
@@ -109,7 +109,7 @@ export default function UseCaseTabs() {
         </div>
 
         {/* Tab content */}
-        <div key={active} style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: '2rem', alignItems: 'start', animation: 'fadeInUp 0.35s ease' }}>
+        <div key={active} className="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-8 items-start" style={{ animation: 'fadeInUp 0.35s ease' }}>
           <div style={{ background: 'var(--panel)', border: `1px solid ${tab.color}25`, borderRadius: '12px', padding: '2.5rem' }}>
             <h3 style={{ fontFamily: "'Space Mono', monospace", fontSize: '1.2rem', fontWeight: 700, color: tab.color, marginBottom: '1.5rem', lineHeight: 1.3 }}>
               {tab.headline}

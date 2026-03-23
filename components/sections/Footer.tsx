@@ -1,9 +1,9 @@
 'use client'
 export default function Footer() {
   return (
-    <footer style={{ background: 'var(--bg2)', borderTop: '1px solid var(--border)', padding: '3rem 2.5rem 2rem' }}>
+    <footer className="pt-12 pb-8 px-5 md:px-10 border-t border-[var(--border)]" style={{ background: 'var(--bg2)' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: '3rem', marginBottom: '2.5rem' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-10">
           {/* Brand */}
           <div>
             <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '1.2rem', fontWeight: 700, color: 'var(--accent)', marginBottom: '0.75rem', letterSpacing: '0.04em' }}>

@@ -13,7 +13,7 @@ export default function ScanIdle({ onStart }: { onStart: () => void }) {
   ]
 
   return (
-    <div className="scan-idle-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
       {/* Left */}
       <div>
         <h3 style={{ fontFamily: "'Space Mono', monospace", fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginBottom: '1rem' }}>

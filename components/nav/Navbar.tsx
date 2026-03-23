@@ -18,7 +18,6 @@ export default function Navbar() {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '0 2.5rem',
     height: '64px',
     background: scrolled ? 'rgba(5,8,16,0.92)' : 'transparent',
     backdropFilter: scrolled ? 'blur(16px)' : 'none',
@@ -27,7 +26,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav style={navStyle}>
+    <nav style={navStyle} className="px-5 md:px-10">
       {/* Logo */}
       <a href="#" style={{ fontFamily: "'Space Mono', monospace", fontSize: '1.1rem', fontWeight: 700, color: 'var(--accent)', textDecoration: 'none', letterSpacing: '0.04em' }}>
         Fingerprint<span style={{ color: 'var(--accent2)' }}>IQ</span>

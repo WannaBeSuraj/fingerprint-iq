@@ -39,7 +39,7 @@ export default function HowItWorks() {
   ]
 
   return (
-    <section id="how-it-works" style={{ padding: '6rem 2.5rem' }}>
+    <section id="how-it-works" className="py-24 px-5 md:px-10">
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div className="section-fade" style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.7rem', color: 'var(--accent)', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: '1rem' }}>
@@ -77,7 +77,7 @@ export default function HowItWorks() {
         </div>
 
         {/* Explainer callout */}
-        <div className="section-fade" style={{ marginTop: '3rem', background: 'rgba(0,255,180,0.05)', border: '1px solid var(--border2)', borderRadius: '12px', padding: '2rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'center' }}>
+        <div className="section-fade grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-12 p-6 md:p-8 rounded-xl border border-[var(--border2)] bg-[rgba(0,255,180,0.05)]">
           <div>
             <h3 style={{ fontFamily: "'Space Mono', monospace", fontSize: '1.1rem', fontWeight: 700, color: 'var(--accent)', marginBottom: '0.75rem' }}>
               The Incognito Myth

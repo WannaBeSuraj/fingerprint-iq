@@ -102,15 +102,3 @@ nav, main, footer, section { position: relative; z-index: 1; }
 .stagger.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.25s; }
 .stagger.visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.35s; }
 .stagger.visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.45s; }
-
-@media (max-width: 768px) {
-  nav { padding: 0 1.25rem; }
-  section { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
-  .scan-idle-grid { grid-template-columns: 1fr !important; }
-  footer > div > div:first-of-type { grid-template-columns: 1fr 1fr !important; }
-  h1 { font-size: 2rem !important; }
-}
-@media (max-width: 480px) {
-  footer > div > div:first-of-type { grid-template-columns: 1fr !important; }
-  nav a:last-child { padding: 8px 14px !important; font-size: 0.72rem !important; }
-}

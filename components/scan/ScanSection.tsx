@@ -8,7 +8,7 @@ export default function ScanSection() {
   const scanData = useScan()
 
   return (
-    <section id="scan" style={{ padding: '6rem 2.5rem', background: 'var(--bg2)' }}>
+    <section id="scan" className="py-24 px-5 md:px-10" style={{ background: 'var(--bg2)' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Header */}
         <div className="section-fade" style={{ textAlign: 'center', marginBottom: '4rem' }}>

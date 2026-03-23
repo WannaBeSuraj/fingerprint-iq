@@ -130,7 +130,7 @@ export default function IdentityGraph() {
   }, [])
 
   return (
-    <section id="graph" style={{ padding: '6rem 2.5rem', background: 'var(--bg2)' }}>
+    <section id="graph" className="py-24 px-5 md:px-10" style={{ background: 'var(--bg2)' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div className="section-fade" style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.7rem', color: 'var(--accent)', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: '1rem' }}>
@@ -145,7 +145,7 @@ export default function IdentityGraph() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: '2rem', alignItems: 'start' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-8 items-start">
           {/* Graph */}
           <div style={{ background: 'var(--panel)', border: '1px solid var(--border)', borderRadius: '12px', overflow: 'hidden', position: 'relative' }}>
             {!d3Loaded && (

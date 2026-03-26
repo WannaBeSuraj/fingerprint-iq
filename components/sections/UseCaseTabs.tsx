@@ -126,7 +126,7 @@ export default function UseCaseTabs() {
               <a href="#scan" style={{
                 fontFamily: "'Space Mono', monospace", fontSize: '0.8rem', fontWeight: 700,
                 padding: '12px 24px', borderRadius: '6px', textDecoration: 'none',
-                background: tab.color, color: '#050810', letterSpacing: '0.04em',
+                background: tab.color, color: '#ffffff', letterSpacing: '0.04em',
                 display: 'inline-block', transition: 'opacity 0.15s',
               }}
                 onMouseEnter={e => { e.currentTarget.style.opacity = '0.85' }}

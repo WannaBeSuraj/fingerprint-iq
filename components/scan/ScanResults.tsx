@@ -39,7 +39,7 @@ function FlagRow({
   detail?: string
 }) {
   return (
-    <div style={{ padding: '7px 0', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+    <div style={{ padding: '7px 0', borderBottom: '1px solid var(--border)' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.83rem', color: 'var(--muted2)' }}>
           {label}
@@ -63,7 +63,7 @@ function FlagRow({
 // Small data card
 function DataCard({ label, value, accent }: { label: string; value: string; accent?: string }) {
   return (
-    <div style={{ padding: '10px 12px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)' }}>
+    <div style={{ padding: '10px 12px', background: 'var(--bg3)', borderRadius: '8px', border: '1px solid var(--border)' }}>
       <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.58rem', color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '4px' }}>
         {label}
       </div>
@@ -132,7 +132,7 @@ export default function ScanResults({ signals, pls, fingerprintId, onReset }: Pr
             <AnimatedScore target={pls.score} color={pls.color} />
             <span style={{ fontSize: '1.2rem', color: 'var(--muted)', fontWeight: 400 }}>/100</span>
           </div>
-          <div style={{ height: '6px', background: 'rgba(255,255,255,0.08)', borderRadius: '3px', overflow: 'hidden', margin: '0.75rem 0' }}>
+          <div style={{ height: '6px', background: 'var(--border)', borderRadius: '3px', overflow: 'hidden', margin: '0.75rem 0' }}>
             <div style={{
               height: '100%', width: `${pls.score}%`,
               background: pls.color, borderRadius: '3px',
@@ -268,10 +268,10 @@ export default function ScanResults({ signals, pls, fingerprintId, onReset }: Pr
             <div key={item.name} style={{
               display: 'flex', alignItems: 'center', gap: '10px',
               padding: '8px 12px', borderRadius: '8px',
-              background: item.active ? 'rgba(0,255,180,0.05)' : 'rgba(255,255,255,0.02)',
-              border: `1px solid ${item.active ? 'rgba(0,255,180,0.15)' : 'rgba(255,255,255,0.04)'}`,
+              background: item.active ? 'var(--bg3)' : 'var(--panel)',
+              border: `1px solid ${item.active ? 'var(--border2)' : 'var(--border)'}`,
             }}>
-              <span style={{ width: 8, height: 8, borderRadius: '50%', flexShrink: 0, background: item.active ? 'var(--accent)' : 'var(--muted)', boxShadow: item.active ? '0 0 6px rgba(0,255,180,0.5)' : 'none' }} />
+              <span style={{ width: 8, height: 8, borderRadius: '50%', flexShrink: 0, background: item.active ? 'var(--accent)' : 'var(--muted)', boxShadow: item.active ? '0 0 6px rgba(5,150,105,0.3)' : 'none' }} />
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.82rem', fontWeight: 500, color: item.active ? 'var(--text)' : 'var(--muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   {item.name}
@@ -319,7 +319,7 @@ export default function ScanResults({ signals, pls, fingerprintId, onReset }: Pr
             {showFonts && (
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginTop: '0.75rem' }}>
                 {signals.fonts.map(f => (
-                  <span key={f} style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.72rem', padding: '3px 10px', background: 'rgba(0,200,255,0.08)', border: '1px solid rgba(0,200,255,0.2)', borderRadius: '20px', color: 'var(--accent2)' }}>
+                  <span key={f} style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.72rem', padding: '3px 10px', background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: '20px', color: 'var(--accent2)' }}>
                     {f}
                   </span>
                 ))}
@@ -330,7 +330,7 @@ export default function ScanResults({ signals, pls, fingerprintId, onReset }: Pr
       </div>
 
       {/* ── Row 5: Privacy Advice ────────────────────────────────────── */}
-      <div style={{ background: 'rgba(123,79,255,0.07)', border: '1px solid rgba(123,79,255,0.22)', borderRadius: '12px', padding: '1.5rem', marginBottom: '1.5rem' }}>
+      <div style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: '12px', padding: '1.5rem', marginBottom: '1.5rem' }}>
         <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.72rem', fontWeight: 700, color: 'var(--accent3)', marginBottom: '0.75rem' }}>
           Privacy Recommendations
         </div>
@@ -367,7 +367,7 @@ export default function ScanResults({ signals, pls, fingerprintId, onReset }: Pr
             ]
             navigator.clipboard?.writeText(lines.join('\n'))
           }}
-          style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.78rem', fontWeight: 700, padding: '12px 28px', borderRadius: '6px', background: 'var(--accent)', border: 'none', color: '#050810', cursor: 'pointer', letterSpacing: '0.04em', transition: 'opacity 0.15s' }}
+          style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.78rem', fontWeight: 700, padding: '12px 28px', borderRadius: '6px', background: 'var(--accent)', border: 'none', color: '#ffffff', cursor: 'pointer', letterSpacing: '0.04em', transition: 'opacity 0.15s' }}
           onMouseEnter={e => { e.currentTarget.style.opacity = '0.85' }}
           onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}>
           Copy Full Report
@@ -393,7 +393,7 @@ export default function ScanResults({ signals, pls, fingerprintId, onReset }: Pr
               }
               await new Promise(r => setTimeout(r, 100))
 
-              const canvas = await html2canvas(el, { backgroundColor: '#050810', scale: 2, windowWidth: isMobile ? 840 : window.innerWidth })
+              const canvas = await html2canvas(el, { backgroundColor: '#f8fafc', scale: 2, windowWidth: isMobile ? 840 : window.innerWidth })
               const imgData = canvas.toDataURL('image/jpeg', 0.95)
               
               if (isMobile) {
@@ -414,7 +414,7 @@ export default function ScanResults({ signals, pls, fingerprintId, onReset }: Pr
             }
           }}
           style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.78rem', fontWeight: 700, padding: '12px 28px', borderRadius: '6px', background: 'transparent', border: '1px solid var(--accent3)', color: 'var(--accent3)', flexShrink: 0, cursor: downloading ? 'wait' : 'pointer', letterSpacing: '0.04em', transition: 'all 0.15s' }}
-          onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent3)'; e.currentTarget.style.color = '#050810' }}
+          onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent3)'; e.currentTarget.style.color = '#ffffff' }}
           onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--accent3)' }}>
           {downloading ? 'Generating...' : '↓ Download PDF'}
         </button>

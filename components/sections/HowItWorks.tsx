@@ -77,7 +77,7 @@ export default function HowItWorks() {
         </div>
 
         {/* Explainer callout */}
-        <div className="section-fade grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-12 p-6 md:p-8 rounded-xl border border-[var(--border2)] bg-[rgba(0,255,180,0.05)]">
+        <div className="section-fade grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-12 p-6 md:p-8 rounded-xl border border-[var(--border2)]" style={{ background: 'var(--bg3)' }}>
           <div>
             <h3 style={{ fontFamily: "'Space Mono', monospace", fontSize: '1.1rem', fontWeight: 700, color: 'var(--accent)', marginBottom: '0.75rem' }}>
               The Incognito Myth

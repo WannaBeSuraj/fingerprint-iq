@@ -27,7 +27,7 @@ export default function ScanIdle({ onStart }: { onStart: () => void }) {
             </div>
           ))}
         </div>
-        <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.82rem', color: 'var(--muted)', padding: '12px 16px', background: 'rgba(0,255,180,0.06)', borderRadius: '8px', border: '1px solid var(--border)', lineHeight: 1.6 }}>
+        <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.82rem', color: 'var(--text)', padding: '12px 16px', background: 'var(--bg3)', borderRadius: '8px', border: '1px solid var(--border)', lineHeight: 1.6 }}>
           🔒 All analysis happens in your browser. Nothing is sent to any server. No data is stored.
         </div>
       </div>
@@ -41,7 +41,7 @@ export default function ScanIdle({ onStart }: { onStart: () => void }) {
           style={{
             width: '200px', height: '200px',
             borderRadius: '50%',
-            background: hovered ? 'rgba(0,255,180,0.15)' : 'rgba(0,255,180,0.08)',
+            background: hovered ? 'var(--bg3)' : 'var(--panel)',
             border: `2px solid ${hovered ? 'var(--accent)' : 'var(--border2)'}`,
             cursor: 'pointer',
             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8px',

@@ -81,7 +81,7 @@ export default function HeroSection() {
 
         <h1 style={{ fontFamily: "'Space Mono', monospace", fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', fontWeight: 700, lineHeight: 1.1, marginBottom: '1.5rem', color: 'var(--text)' }}>
           Your Browser<br />
-          Is <span style={{ color: 'var(--accent)', textShadow: '0 0 20px rgba(0,255,180,0.4)' }}>Talking.</span><br />
+          Is <span style={{ color: 'var(--accent)', textShadow: '0 0 20px rgba(5,150,105,0.2)' }}>Talking.</span><br />
           Are You<br />
           Listening?
         </h1>
@@ -95,7 +95,7 @@ export default function HeroSection() {
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
           <a href="#scan" style={{
             fontFamily: "'Space Mono', monospace", fontWeight: 700, fontSize: '0.85rem',
-            background: 'var(--accent)', color: '#050810',
+            background: 'var(--accent)', color: '#ffffff',
             padding: '14px 32px', borderRadius: '6px', textDecoration: 'none',
             letterSpacing: '0.04em', transition: 'all 0.15s',
           }}
@@ -143,7 +143,7 @@ export default function HeroSection() {
           </div>
 
           {/* Terminal body */}
-          <div ref={terminalRef} style={{ background: 'rgba(5,8,16,0.95)', padding: '20px', fontFamily: "'Space Mono', monospace", fontSize: '0.72rem', lineHeight: 1.8, minHeight: '380px', maxHeight: '420px', overflowY: 'auto' }}>
+          <div ref={terminalRef} style={{ background: '#f1f5f9', padding: '20px', fontFamily: "'Space Mono', monospace", fontSize: '0.72rem', lineHeight: 1.8, minHeight: '380px', maxHeight: '420px', overflowY: 'auto' }}>
             {lines.map((line, i) => (
               <div key={i} style={{ color: line.color || 'var(--muted2)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 {line.text}

@@ -19,9 +19,9 @@ export default function Navbar() {
     alignItems: 'center',
     justifyContent: 'space-between',
     height: '64px',
-    background: scrolled ? 'rgba(5,8,16,0.92)' : 'transparent',
+    background: scrolled ? 'rgba(255,255,255,0.92)' : 'transparent',
     backdropFilter: scrolled ? 'blur(16px)' : 'none',
-    borderBottom: scrolled ? '1px solid rgba(0,255,180,0.12)' : '1px solid transparent',
+    borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
     transition: 'all 0.3s ease',
   }
 
@@ -49,7 +49,7 @@ export default function Navbar() {
         fontSize: '0.78rem',
         fontWeight: 700,
         background: 'var(--accent)',
-        color: '#050810',
+        color: '#ffffff',
         padding: '10px 22px',
         borderRadius: '6px',
         textDecoration: 'none',

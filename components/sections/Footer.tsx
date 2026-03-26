@@ -63,7 +63,7 @@ export default function Footer() {
             © 2025 FingerprintIQ. College Research Project. All analysis runs client-side — no data is stored.
           </span>
           <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-            <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--accent)', display: 'inline-block', boxShadow: '0 0 6px rgba(0,255,180,0.6)' }} />
+            <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--accent)', display: 'inline-block', boxShadow: '0 0 6px rgba(5,150,105,0.4)' }} />
             <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.72rem', color: 'var(--muted)' }}>All systems operational</span>
           </div>
         </div>

@@ -55,7 +55,7 @@ export default function IdentityGraph() {
 
       // Links
       const link = svg.append('g').selectAll('line').data(links).enter().append('line')
-        .attr('stroke', 'rgba(0,255,180,0.35)')
+        .attr('stroke', 'var(--border2)')
         .attr('stroke-width', (d: GraphLink) => d.confidence * 5)
         .attr('stroke-dasharray', (d: GraphLink) => d.confidence > 0.8 ? 'none' : '6 3')
 
@@ -63,7 +63,7 @@ export default function IdentityGraph() {
       const linkLabel = svg.append('g').selectAll('text').data(links).enter().append('text')
         .attr('font-size', '10px')
         .attr('font-family', 'Space Mono, monospace')
-        .attr('fill', 'rgba(0,255,180,0.6)')
+        .attr('fill', 'var(--muted2)')
         .attr('text-anchor', 'middle')
         .text((d: GraphLink) => `${Math.round(d.confidence * 100)}%`)
 
@@ -109,7 +109,7 @@ export default function IdentityGraph() {
         .attr('text-anchor', 'middle')
         .attr('font-size', '9px')
         .attr('font-family', 'DM Sans, sans-serif')
-        .attr('fill', 'rgba(148,163,184,0.8)')
+        .attr('fill', 'var(--muted2)')
         .text((d: GraphNode) => d.label)
 
       sim.on('tick', () => {
@@ -192,8 +192,8 @@ export default function IdentityGraph() {
                 <button onClick={() => setSelected(null)} style={{ marginTop: '0.75rem', fontFamily: "'Space Mono', monospace", fontSize: '0.7rem', color: 'var(--muted)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>✕ close</button>
               </div>
             ) : (
-              <div style={{ background: 'rgba(0,255,180,0.04)', border: '1px solid var(--border)', borderRadius: '12px', padding: '1.25rem' }}>
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.85rem', color: 'var(--muted2)', lineHeight: 1.65 }}>
+              <div style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: '12px', padding: '1.25rem' }}>
+                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.85rem', color: 'var(--text)', lineHeight: 1.65 }}>
                   <strong style={{ color: 'var(--accent)' }}>Sessions 1, 2, 3 & 6</strong> all belong to the same person — Chrome, incognito, mobile, and Edge sessions linked by canvas + audio + font signals.
                 </p>
                 <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.82rem', color: 'var(--muted)', marginTop: '0.5rem', lineHeight: 1.6 }}>

@@ -17,7 +17,7 @@ export default function ScanProgress({ steps, currentStep }: { steps: string[]; 
       {/* Ring */}
       <div style={{ position: 'relative', width: '180px', height: '180px' }}>
         <svg width="180" height="180" style={{ transform: 'rotate(-90deg)' }}>
-          <circle cx="90" cy="90" r="70" fill="none" stroke="rgba(0,255,180,0.1)" strokeWidth="6" />
+          <circle cx="90" cy="90" r="70" fill="none" stroke="var(--border)" strokeWidth="6" />
           <circle
             cx="90" cy="90" r="70"
             fill="none"
@@ -26,7 +26,7 @@ export default function ScanProgress({ steps, currentStep }: { steps: string[]; 
             strokeLinecap="round"
             strokeDasharray={circumference}
             strokeDashoffset={offset}
-            style={{ transition: 'stroke-dashoffset 0.6s ease', filter: 'drop-shadow(0 0 6px rgba(0,255,180,0.6))' }}
+            style={{ transition: 'stroke-dashoffset 0.6s ease', filter: 'drop-shadow(0 0 6px rgba(5,150,105,0.4))' }}
           />
         </svg>
         <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '2px' }}>

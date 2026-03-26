@@ -4,21 +4,21 @@
 @tailwind utilities;
 
 :root {
-  --bg:      #050810;
-  --bg2:     #0a0f1e;
-  --bg3:     #0e1528;
-  --panel:   #111827;
-  --panel2:  #161f33;
-  --border:  rgba(0, 255, 180, 0.12);
-  --border2: rgba(0, 255, 180, 0.28);
-  --accent:  #00ffb4;
-  --accent2: #00c8ff;
-  --accent3: #7b4fff;
-  --warn:    #ff6b35;
-  --danger:  #ff4444;
-  --text:    #e2e8f0;
-  --muted:   #64748b;
-  --muted2:  #94a3b8;
+  --bg:      #f8fafc;
+  --bg2:     #ffffff;
+  --bg3:     #f1f5f9;
+  --panel:   #ffffff;
+  --panel2:  #f8fafc;
+  --border:  #e2e8f0;
+  --border2: #cbd5e1;
+  --accent:  #059669; /* Emerald 600 */
+  --accent2: #0284c7; /* Sky 600 */
+  --accent3: #6d28d9; /* Violet 700 */
+  --warn:    #ea580c; /* Orange 600 */
+  --danger:  #dc2626; /* Red 600 */
+  --text:    #0f172a; /* Slate 900 */
+  --muted:   #64748b; /* Slate 500 */
+  --muted2:  #475569; /* Slate 600 */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,8 +34,8 @@ body::before {
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0, 255, 180, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 180, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
   background-size: 48px 48px;
   pointer-events: none;
   z-index: 0;
@@ -45,9 +45,9 @@ body::after {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 40% at 0% 0%, rgba(0, 255, 180, 0.055) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 100% 100%, rgba(0, 200, 255, 0.04) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(123, 79, 255, 0.03) 0%, transparent 70%);
+    radial-gradient(ellipse 60% 40% at 0% 0%, rgba(5, 150, 105, 0.03) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 100% 100%, rgba(2, 132, 199, 0.03) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(109, 40, 217, 0.03) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
